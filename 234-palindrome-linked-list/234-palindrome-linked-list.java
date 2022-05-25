@@ -22,7 +22,7 @@ class Solution {
             slow = slow.next;
         }
         while (!stack.isEmpty()) {
-            if (Objects.equals(stack.pop(), slow.val))
+            if (stack.pop() == slow.val)
                 slow = slow.next;
             else
                 return false;
