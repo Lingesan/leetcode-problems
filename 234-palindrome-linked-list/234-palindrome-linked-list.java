@@ -11,10 +11,6 @@ import java.util.Deque;
  */
 class Solution {
     public boolean isPalindrome(ListNode head) {
-        if (head == null)
-            return false;
-        if (head.next == null)
-            return true;
         Deque<Integer> stack = new LinkedList<>();
         ListNode fast = head, slow = head;
         while (fast != null && fast.next != null) {
