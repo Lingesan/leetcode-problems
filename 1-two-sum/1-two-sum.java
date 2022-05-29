@@ -11,7 +11,7 @@ class Solution {
                return new int[]{cache.get(secondNum), i};
            }
        }
-        throw new IllegalStateException("Invalid input");
+        throw new IllegalArgumentException("Invalid input");
  
     }
 }
