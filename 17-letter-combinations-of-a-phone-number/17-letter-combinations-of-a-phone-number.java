@@ -22,21 +22,21 @@ class Solution {
         }
         List<String> list = new ArrayList<>();
         list.add("");
-        return recursivelyGenerateCombinations(digits, list);
+        return recursivelyGenerateCombinations(digits,0, list);
     }
     
     
-    public List<String> recursivelyGenerateCombinations(String digits, List<String> list){
-        if(digits == ""){
+    public List<String> recursivelyGenerateCombinations(String digits,int index, List<String> list){
+        if(digits == "" || index >= digits.length()){
             return list;
         }
-        String pattern = LETTER_PATTERN.get(digits.charAt(0));
+        String pattern = LETTER_PATTERN.get(digits.charAt(index));
         List<String> comboList = new ArrayList<>();
         for(char ch: pattern.toCharArray()){
             for(String combo : list){
                 comboList.add(combo + ch);
             }
         }
-        return recursivelyGenerateCombinations(digits.substring(1),comboList);
+        return recursivelyGenerateCombinations(digits, index+1,comboList);
     }
 }
