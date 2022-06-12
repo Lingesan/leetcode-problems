@@ -4,13 +4,12 @@ class Solution {
     }
     
     private boolean solveSudokuRecursive(char[][] board){
-        for(int i = 0; i< 9;i++){
+        for(int i = 0; i < 9;i++){
             for(int j = 0; j < 9;j++){
                 if(board[i][j] != '.'){
                     continue;
                 }
-                for(char k='1';k<='9';k++){
-                    char val = k;
+                for(char val='1';val<='9';val++){
                     if(isValidCharacter(board,i,j,val)){
                         board[i][j] = val;
                         if(solveSudokuRecursive(board)){
@@ -29,18 +28,7 @@ class Solution {
     private boolean isValidCharacter(char[][] board, int i, int j, char val){
         return isValidRow(board[i], val) && isValidColumn(board,j, val) && isValidSubBox(board,i,j,val);
     }
-    
-    private boolean isSolved(char[][] board){
-        for(char[] row: board){
-            for(char cell: row){
-                if(cell == '.'){
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-    
+       
     private boolean isValidRow(char[] row, char value){
         for(char cell: row){
             if(cell == value){
