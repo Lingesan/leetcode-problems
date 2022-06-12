@@ -1,21 +1,20 @@
 class Solution {
+    
+    List<List<Integer>> result = new ArrayList<>();
+    
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        result.add(new ArrayList<>());
-        return generateSubSetsWithoutDuplicate(nums,0, result);
+        
+        findSubsets(nums,0,new ArrayList<>());
+        return result;
     }
     
-    public List<List<Integer>> generateSubSetsWithoutDuplicate(int[] nums,int index, List<List<Integer>> subSet){
-        if(index >= nums.length){
-            return subSet;
+    
+    private void findSubsets(int[] nums, int index,List<Integer> currentSubSet){
+        result.add(new ArrayList<>(currentSubSet));
+        for(int i= index; i< nums.length;i++){
+            currentSubSet.add(nums[i]);
+            findSubsets(nums, i+1, currentSubSet);
+            currentSubSet.remove(currentSubSet.size() - 1);
         }
-        List<List<Integer>> result = new ArrayList<>();
-        for(List<Integer> list : subSet){
-            List<Integer> addedList = new ArrayList<>(list);
-            addedList.add(nums[index]);
-            result.add(addedList);
-            result.add(list);
-        }
-        return generateSubSetsWithoutDuplicate(nums, index+1,result);
     }
 }
