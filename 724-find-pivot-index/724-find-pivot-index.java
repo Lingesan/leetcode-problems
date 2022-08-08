@@ -12,8 +12,6 @@ class Solution {
             rightSum[i] = sum;
             sum += nums[i];
         }
-        System.out.println(Arrays.toString(leftSum));
-        System.out.println(Arrays.toString(rightSum));
         for(int i=0;i<nums.length;i++){
             if(rightSum[i] == leftSum[i]){
                 return i;
